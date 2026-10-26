@@ -47,7 +47,7 @@ public class LoginSteps extends BaseClass {
          System.out.print("Login Successfully");
 	}
 	
-         //Invalid case
+         //Invalid test case
          
          @When("user enter invalid username")
          public void user_enter_invalid_username() {

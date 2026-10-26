@@ -9,10 +9,14 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
     features = "src/test/resources/features",
     glue = {"stepdefinations", "hooks"},
+    
     plugin = {
         "pretty",
         "html:target/cucumber-report.html",
         "json:target/cucumber.json",
+        
+        "junit-target/cucumber.xml",               //for jenkins 
+        
         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
     },
     monochrome = true,

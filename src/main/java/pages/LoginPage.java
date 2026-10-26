@@ -7,7 +7,6 @@ import basePage.BaseClass;
 
 public class LoginPage extends BaseClass {
 	
-//Constructor, Action
 	
 	public LoginPage() {
 		initpagefactory(this);
