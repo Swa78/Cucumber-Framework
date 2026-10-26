@@ -8,7 +8,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.PageFactory;
 
 public class BaseClass {
@@ -34,6 +36,51 @@ public class BaseClass {
 	///////// Browser Launch /////////////////////
 	
 	public void launchBrowser() {
+
+	    String browser_name = prop.getProperty("browser");
+
+	    // true when run with -Dheadless=true (default false)
+	    boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+
+	    if (browser_name.equalsIgnoreCase("chrome")) {
+
+	        ChromeOptions options = new ChromeOptions();
+	        if (headless) {
+	            options.addArguments("--headless=new");
+	            options.addArguments("--window-size=1920,1080");
+	        }
+	        options.addArguments("--remote-allow-origins=*");
+
+	        driver = new ChromeDriver(options);   // pass options here
+	    }
+	    else if (browser_name.equalsIgnoreCase("firefox")) {
+
+	        FirefoxOptions options = new FirefoxOptions();
+	        if (headless) {
+	            options.addArguments("-headless");
+	            options.addArguments("--width=1920");
+	            options.addArguments("--height=1080");
+	        }
+
+	        driver = new FirefoxDriver(options);
+	    }
+	    else {
+	        throw new IllegalArgumentException("Browser not supported: " + browser_name);
+	    }
+
+	    driver.get(prop.getProperty("url"));
+
+	    if (!headless) {
+	        driver.manage().window().maximize();
+	    }
+	}
+	
+	
+	
+	
+	
+	
+	/*public void launchBrowser() {
 		
 	     String browser_name= prop.getProperty("browser");
 		
@@ -48,7 +95,7 @@ public class BaseClass {
 	     }
 	     driver.get(prop.getProperty("url"));
 	     driver.manage().window().maximize();
-	}
+	}   */
 	
 	//==========================common Page factory Method==============================
 	public void initpagefactory(Object page) {

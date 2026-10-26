@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="4.249" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-26T13:07:42.468832100Z">
+<testcase classname="login Feature" name="Login test" time="2.279">
+<system-out><![CDATA[
+Given user is on login page.................................................passed
+When user enter correct username............................................passed
+And user enter correct password.............................................passed
+And user click on login button..............................................passed
+Then user should redirect to dashbaord......................................passed
+]]></system-out>
+</testcase>
+<testcase classname="login Feature" name="Invalid Login test" time="1.771">
+<system-out><![CDATA[
+Given user is on login page.................................................passed
+When user enter invalid username............................................passed
+And user enter invalid password.............................................passed
+And user click on login2 button.............................................passed
+Then error message should be displayed......................................passed
+]]></system-out>
+</testcase>
+</testsuite>
